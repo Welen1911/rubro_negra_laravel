@@ -11,25 +11,16 @@ class ProdutoService
         return Produto::all();
     }
 
-    public function store(array $data)
+    public function indexByPreco(string $preco)
     {
-        return Produto::create($data);
+        if ($preco === 'baixo') {
+            return Produto::orderBy('preco', 'asc')->get();
+        }
+        return Produto::orderBy('preco', 'desc')->get();
     }
 
-    public function show(string $id)
+    public function show(string $codigo)
     {
-        return Produto::find($id);
-    }
-
-    public function update(array $data, string $id)
-    {
-        $produto = Produto::find($id);
-        $produto->update($data);
-        return $produto;
-    }
-
-    public function destroy(string $id)
-    {
-        return Produto::destroy($id);
+        return Produto::where('codigo', $codigo)->first();
     }
 }
