@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\ProdutoController;
+use App\Http\Controllers\Api\ProdutoArrayController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +10,13 @@ Route::get('/user', function (Request $request) {
 
 
 Route::prefix('produtos')->group(function () {
-    Route::get('/', [ProdutoController::class, 'index']);
-    Route::get('/{codigo}', [ProdutoController::class, 'show']);
+    Route::prefix('array')->group(function () {
+        Route::get('/', [ProdutoArrayController::class, 'index']);
+        Route::get('/{codigo}', [ProdutoArrayController::class, 'show']);
+    });
+
+    Route::prefix('arvore')->group(function () {
+        Route::get('/', [ProdutoArrayController::class, 'index']);
+        Route::get('/{codigo}', [ProdutoArrayController::class, 'show']);
+    });
 });

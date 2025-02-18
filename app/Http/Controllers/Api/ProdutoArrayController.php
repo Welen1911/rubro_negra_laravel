@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\ProdutoService;
+use App\Services\ProdutoServiceArray;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class ProdutoArrayController extends Controller
 {
 
     public function __construct(
-        private ProdutoService $produtoService
+        private ProdutoServiceArray $produtoService
     ) {}
 
 
